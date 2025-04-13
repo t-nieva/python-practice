@@ -4,3 +4,4 @@ More projects will be added as I continue learning.
 
 ## Projects
 - Caesar Cipher
+- Secret Auction Program
