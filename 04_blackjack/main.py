@@ -45,6 +45,20 @@ def winner_check(player_cards_list, computer_cards_list):
         return True
     return False
 
+# Check for Ace: it can be counted as 11 or 1 point,
+# depending on what is more advantageous for the player to avoid going over 21.
+def ace_check(player_cards_list):
+    score = sum(player_cards_list)
+    for card in player_cards_list:
+        index = player_cards_list.index(card)
+        if card == 11 and score > 21:
+            player_cards_list[index] = 1
+            score = sum(player_cards_list)
+    if score > 21:
+        return False
+    else:
+        return True
+
 while True:
     player_cards = []
     computer_cards = []
@@ -69,10 +83,11 @@ while True:
         gamer_score = sum(player_cards)
         # If a player scores more than 21, he loses immediately, regardless of the dealer.
         if gamer_score > 21:
-            print(f"Your score is over 21.\n"
-                  f"You went over. You lose.\n")
-            print_finale_score(player_cards, computer_cards)
-            break
+            if not ace_check(player_cards):
+                print(f"Your score is over 21.\n"
+                      f"You went over. You lose.\n")
+                print_finale_score(player_cards, computer_cards)
+                break
 
         to_get_card = input(f"Type 'y' to get another card, type 'n' to pass: \n")
         if to_get_card != 'y':
