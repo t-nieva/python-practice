@@ -1,7 +1,5 @@
 import random
-
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-max_score = 21
+from logo import logo
 
 def get_cards_computer(computer_cards_list, cards_list):
     score = sum(computer_cards_list)
@@ -35,42 +33,43 @@ def winner_check(player_cards_list, computer_cards_list):
     comp_score = sum(computer_cards_list)
 
     if comp_score < player_score:
-        print("You are win!!!")
+        print("You are win!!! 😎 ")
         return True
     elif comp_score > player_score:
-        print("You went over. You lose.")
+        print("You went over. You lose. 😤")
         return True
     elif player_score == comp_score:
         print("Push!")
         return True
     return False
 
-# Check for Ace: it can be counted as 11 or 1 point,
-# depending on what is more advantageous for the player to avoid going over 21.
 def ace_check(player_cards_list):
+    """ Change 11 to 1 if score is over 21
+    :param player_cards_list: list of integers representing card values
+    :return: False if player's score is more than 21 after adjustment, else True """
     score = sum(player_cards_list)
-    for card in player_cards_list:
-        index = player_cards_list.index(card)
-        if card == 11 and score > 21:
-            player_cards_list[index] = 1
-            score = sum(player_cards_list)
-    if score > 21:
-        return False
-    else:
-        return True
+    while score > 21 and 11 in player_cards_list:
+        ace_index = player_cards_list.index(11)
+        player_cards_list[ace_index] = 1
+        score = sum(player_cards_list)
+    return score <= 21
+
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+max_score = 21
 
 while True:
     player_cards = []
     computer_cards = []
-    times = 2
     start = input(f"Do you want play a game of Blackjack? Type 'y' or 'n': \n")
     if start != 'y':
         break
 
-    while times:
+    print("\n" * 20)
+    print(logo)
+
+    for _ in range(2):
         player_cards.append(random.choice(cards))
         computer_cards.append(random.choice(cards))
-        times -= 1
 
     print_current_score(player_cards, computer_cards)
 
@@ -85,7 +84,7 @@ while True:
         if gamer_score > 21:
             if not ace_check(player_cards):
                 print(f"Your score is over 21.\n"
-                      f"You went over. You lose.\n")
+                      f"You went over. You lose. 😤\n")
                 print_finale_score(player_cards, computer_cards)
                 break
 
