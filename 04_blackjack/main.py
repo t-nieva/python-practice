@@ -33,7 +33,7 @@ def winner_check(player_cards_list, computer_cards_list):
     comp_score = sum(computer_cards_list)
 
     if comp_score < player_score:
-        print("You are win!!! 😎 ")
+        print("You are win!!! 😊")
         return True
     elif comp_score > player_score:
         print("You went over. You lose. 😤")
@@ -95,7 +95,7 @@ while True:
 
             if computer_score > 21:
                 print(f"Computer score is over 21.\n"
-                      f"You are win!!!\n")
+                      f"You are win!!! 😊\n")
             else:
                 winner_check(player_cards, computer_cards)
 
