@@ -6,3 +6,5 @@ More projects will be added as I continue learning.
 - Caesar Cipher
 - Secret Auction Program
 - Calculator
+- Blackjack
+- Guess Number
