@@ -1,19 +1,9 @@
 from turtle import Screen
-from main_character import MainCharacter
-from car import Car
-from level import Level
-import random
+from player import Player
+from car_manager import CarManager
+from scoreboard import Scoreboard
+from utils import get_random_color
 import time
-
-def move_cars(cars_list):
-    for _ in range(10):
-        random.choice(cars_list).move()
-
-def get_random_color():
-    r = round(random.uniform(0, 1), 2)
-    g = round(random.uniform(0, 1), 2)
-    b = round(random.uniform(0, 1), 2)
-    return r, g, b
 
 # --- Screen setup ---
 screen = Screen()
@@ -21,53 +11,66 @@ screen.setup(width=600, height=600)
 screen.title('The Turtle Crossing Game')
 screen.tracer(0)
 
-TOP = int(screen.window_width() / 2)
-BOTTOM = -TOP
-NUMBER_OF_CARS = random.randint(10, 20)
+player = Player()
+car_manager = CarManager()
+scoreboard = Scoreboard()
 
-# Turtle class creation
-character_turtle = MainCharacter()
-character_turtle.color('green')
+# --- Countdown and car pre-fill ---
+count = 3
+frame_counter = 0
+countdown_active = True
 
-# Car class creation
-cars = []
-for _ in range(NUMBER_OF_CARS):
-    car = Car()
-    car.color(get_random_color())
-    cars.append(car)
+while countdown_active:
+    time.sleep(0.1)
+    screen.update()
 
-# Level
-level = Level()
+    # Create and move cars (player can't move yet)
+    car_manager.create_car()
+    car_manager.move()
+
+    if frame_counter % 10 == 0: # every second
+        if count > 0:
+            scoreboard.show_countdown_number(count)
+        elif count == 0:
+            scoreboard.show_countdown_number("GO!")
+        else:
+            countdown_active = False
+        count -= 1
+    frame_counter += 1
+scoreboard.clear()
+scoreboard.update_scoreboard()
 
 screen.listen()
-screen.onkey(character_turtle.go_up,'Up')
-screen.onkey(character_turtle.go_left, 'Left')
-screen.onkey(character_turtle.go_right, 'Right')
+screen.onkey(player.go_up, 'Up')
+screen.onkey(player.go_left, 'Left')
+screen.onkey(player.go_right, 'Right')
 
 game_is_on = True
 while game_is_on:
+    time.sleep(0.1)
     screen.update()
-    time.sleep(level.game_speed)
 
-    # Move car logic
-    move_cars(cars)
-    for _car in cars:
-        if _car.xcor() < -300:
-            new_x = abs(_car.xcor())
-            _car.goto(new_x, _car.ycor())
+    car_manager.create_car()
+    car_manager.move()
+    car_manager.cleanup_cars()
 
-        # Game over logic
-        if character_turtle.distance(_car.pos()) <= 20:
-            character_turtle.game_over()
+    # Game over logic
+    for car in car_manager.all_cars:
+        if car.distance(player) < 20:
+            scoreboard.game_over()
             game_is_on = False
 
-    # Level logic
-    if character_turtle.ycor() >= TOP:
-        character_turtle.go_to_start()
-        level.show_level()
-        level.set_speed()
+    # Update level
+    if player.is_at_finish_line():
+        player.go_to_start()
+        car_manager.level_up()
+        scoreboard.increase_level()
+        screen.bgcolor(get_random_color())
 
     # Win logic
-    if level.level > 3:
-        character_turtle.win()
+    if scoreboard.level > 5:
+        scoreboard.clear()
+        scoreboard.win_message()
         game_is_on = False
+
+screen.exitonclick()

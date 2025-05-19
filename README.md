@@ -1,4 +1,4 @@
-# python-practice
+# Python-practice
 This repository contains a collection of small Python projects created as part of my learning journey.  
 More projects will be added as I continue learning.
 
@@ -18,3 +18,19 @@ More projects will be added as I continue learning.
 13. 🐢 Turtle Race Game
 14. 🐍 Snake Game (OOP)
 15. 🏓 The Pong Game
+16. 🐢 Turtle Crossing Game 🚗
+
+## Requirements
+
+- Python 3.x
+
+## How to Run
+
+1. Make sure you have Python 3 installed.
+2. Clone or download this repository.
+3. Choose the game and go to the appropriate directory
+4. Run the game:
+
+   ```bash
+   python main.py
+   ```
