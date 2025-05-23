@@ -30,10 +30,7 @@ while len(guessed_states) < 50:
 
     guess = guess.title()
     if guess == "Exit":
-        missing_states = []
-        for state in all_states:
-            if state not in guessed_states:
-                missing_states.append(state)
+        missing_states = [state for state in all_states if state not in guessed_states]
         data_to_learn = pandas.DataFrame(missing_states)
         data_to_learn.to_csv(OUTPUT_FILE)
         screen.bye()
