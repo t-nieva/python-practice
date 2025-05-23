@@ -19,6 +19,9 @@ More projects will be added as I continue learning.
 14. 🐍 Snake Game (OOP)
 15. 🏓 The Pong Game
 16. 🐢 Turtle Crossing Game 🚗
+17. Mail Merge Project ✉️
+18. 🗺️ U.S. States Game (Python Turtle Project)
+19. NATO Phonetic Alphabet Converter
 
 ## Requirements
 
