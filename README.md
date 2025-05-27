@@ -22,6 +22,8 @@ More projects will be added as I continue learning.
 17. Mail Merge Project ✉️
 18. 🗺️ U.S. States Game (Python Turtle Project)
 19. NATO Phonetic Alphabet Converter
+20. Mile to Km Converter
+21. ⏱️ Pomodoro Timer
 
 ## Requirements
 
