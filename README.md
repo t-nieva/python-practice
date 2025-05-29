@@ -24,6 +24,7 @@ More projects will be added as I continue learning.
 19. NATO Phonetic Alphabet Converter
 20. Mile to Km Converter
 21. ⏱️ Pomodoro Timer
+22. 🔐 Password Manager (Tkinter)
 
 ## Requirements
 
