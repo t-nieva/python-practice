@@ -12,9 +12,10 @@ and save your login credentials locally.
 
 - 🔒 Generate strong random passwords with letters, numbers, and symbols
 - 📋 Automatically copy the password to clipboard
-- 💾 Save website, email, and password to a local file (`data.txt`)
 - ⚠️ Field validation – prompts if any input is missing
 - ✅ Confirmation dialog before saving credentials
+- 💾 JSON-Based Storage – Save website, email, and password entries to a structured data.json file
+- 🔍 Password Lookup – Quickly find saved passwords by entering the website name
 - 🎨 Clean and intuitive GUI with custom logo support
 
 👩‍💻 Author  
