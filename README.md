@@ -26,6 +26,7 @@ More projects will be added as I continue learning.
 21. ⏱️ Pomodoro Timer
 22. 🔐 Password Manager (Tkinter)
 23. Flashy — Flashcards for Learning Vocabulary
+24. Birthday Email Automation 🎂📧
 
 ## Requirements
 
