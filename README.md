@@ -27,6 +27,8 @@ More projects will be added as I continue learning.
 22. 🔐 Password Manager (Tkinter)
 23. Flashy — Flashcards for Learning Vocabulary
 24. Birthday Email Automation 🎂📧
+25. 🗣️ Kanye Says...
+26. 🚀 ISS Overhead Notifier
 
 ## Requirements
 
