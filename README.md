@@ -11,7 +11,7 @@ More projects will be added as I continue learning.
 6. Higher Lower Game
 7. ☕ Coffee Machine Program
 8. Coffee Machine Program (OOP)
-9. Quiz Game Project 🧠
+9. 🧠 Quizler
 10. Spirograph (Turtle module)
 11. 🎨 Spot Painting Generator
 12. Etch-a-Sketch
