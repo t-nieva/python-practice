@@ -29,6 +29,7 @@ More projects will be added as I continue learning.
 24. Birthday Email Automation 🎂📧
 25. 🗣️ Kanye Says...
 26. 🚀 ISS Overhead Notifier
+27. Weather Rain Alert Script
 
 ## Requirements
 

@@ -10,7 +10,7 @@ __pycache__/
 venv/
 env/
 .venv/
-.env/
+27_rain_alert/.env/
 
 # Distribution / packaging
 build/
@@ -94,7 +94,7 @@ dmypy.json
 .pylint.d/
 
 # Environments
-.env
+27_rain_alert/.env
 .env.*
 *.env
 
