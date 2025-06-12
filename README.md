@@ -30,6 +30,8 @@ More projects will be added as I continue learning.
 25. 🗣️ Kanye Says...
 26. 🚀 ISS Overhead Notifier
 27. Weather Rain Alert Script
+28. Stock News Email Alert
+29. 🏃 Workout Tracker with Nutritionix & Sheety API
 
 ## Requirements
 
