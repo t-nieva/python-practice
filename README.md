@@ -32,6 +32,7 @@ More projects will be added as I continue learning.
 27. Weather Rain Alert Script
 28. Stock News Email Alert
 29. 🏃 Workout Tracker with Nutritionix & Sheety API
+30. Cheap Flight Finder ✈️
 
 ## Requirements
 
