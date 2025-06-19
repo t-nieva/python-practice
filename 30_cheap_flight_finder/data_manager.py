@@ -5,7 +5,8 @@ import logging
 
 load_dotenv()
 SHEETY_BASIC_AUTH = os.getenv("SHEETY_BASIC_AUTH")
-SHEETY_ENDPOINT = f"https://api.sheety.co/151dee0f7d859752d5802218a7d97001/lowCostFlights/prices"
+SHEETY_PRICES_ENDPOINT = os.getenv("SHEETY_PRICES_ENDPOINT")
+SHEETY_USERS_ENDPOINT = os.getenv("SHEETY_USERS_ENDPOINT")
 
 sheety_headers = {
     'Authorization': f'Basic {SHEETY_BASIC_AUTH}'
@@ -15,10 +16,11 @@ class DataManager:
     # This class is responsible for talking to the Google Sheet.
     def __init__(self):
         self.destination_data = {}
+        self.customer_data = {}
 
     def get_destination_data(self):
         try:
-            response = requests.get(url=SHEETY_ENDPOINT, headers=sheety_headers)
+            response = requests.get(url=SHEETY_PRICES_ENDPOINT, headers=sheety_headers)
             response.raise_for_status()
             data = response.json()
             self.destination_data = data.get("prices", [])
@@ -41,9 +43,18 @@ class DataManager:
 
             try:
                 response = requests.put(
-                    url=f"{SHEETY_ENDPOINT}/{data['id']}",
+                    url=f"{SHEETY_PRICES_ENDPOINT}/{data['id']}",
                     json=new_data,
                     headers=sheety_headers)
                 response.raise_for_status()
             except requests.RequestException as e:
                 logging.error(f"Failed to update IATA code for {data['city']}: {e}")
+
+    def get_customer_emails(self):
+        response = requests.get(url=SHEETY_USERS_ENDPOINT, headers=sheety_headers)
+        data = response.json()
+        # See how Sheet data is formatted so that you use the correct column name!
+        print(data)
+        # Name of spreadsheet 'tab' with the customer emails should be "users".
+        self.customer_data = data["users"]
+        return self.customer_data
