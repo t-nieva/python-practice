@@ -34,7 +34,7 @@ class NotificationManager:
     def send_emails(self, email_list, email_body):
         """Sends emails to a list of recipients."""
         try:
-            with smtplib.SMTP(self.smtp_address) as connection:
+            with smtplib.SMTP(self.smtp_address, port=587, timeout=10) as connection:
                 connection.starttls()
                 connection.login(self.email, self.email_password)
                 for email in email_list:
